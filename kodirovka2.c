@@ -15,5 +15,13 @@ person arr2[3];
 fread(arr2, sizeof(person), 3, f);
 for(int i=0; i<3; i++)printf("%s%d\n", arr2[i].name, arr2[i].age);
 fclose(f);
-return 0;
+f=fopen("data.bin", "r");
+int index;
+scanf("%d", &index);
+int pos=index*sizeof(person);
+fseek(f, pos, SEEK_SET);
+person man;
+fread(&man, sizeof(person), 1, f);
+for(int i=0; i<3; i++)printf("%s%d\n", man.name, man.age);
+fclose(f);
 }
